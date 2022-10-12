@@ -1,4 +1,4 @@
-# Elias gamma text
+# Elias gamma code
 how does a decoder work:
 
   0. 1 char = 8 bit
