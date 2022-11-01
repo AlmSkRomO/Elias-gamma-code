@@ -47,14 +47,14 @@ vector<int> RLE(vector<int> sElias, bool fn) {
     }
 
     vector<int> ans;
-    if (arr.size() % 8 != 0) { 
+    if (arr.size() % 7 != 0) { 
         ans.push_back(0);
         return ans; 
     }
     else { 
         for (int i = 0, count = 0; count != arr.size(); i++) {
             ans.push_back(0);
-            for (int n = 128; n; n/=2, count++) {
+            for (int n = 64; n; n/=2, count++) {
                 ans[i] += arr[count]*n;
             }
         }
