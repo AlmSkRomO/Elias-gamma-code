@@ -23,12 +23,12 @@ vector<int> elias(string s) {
         if (s[i] == '0') {
             int k = 2;
             i++;
-            while (s[i] != '1') {
+            while (i < s.length() && s[i] != '1') {
                 k *= 2;
                 i++;
             }
             arr.push_back(0);
-            while (k) {
+            while (i < s.length() && k) {
                 arr[arr.size() - 1] += k * (s[i] == '1' ? 1 : 0);
                 k /= 2;
                 i++;
@@ -39,6 +39,7 @@ vector<int> elias(string s) {
 }
 
 vector<int> RLE(vector<int> sElias, bool fn) {
+    cout << "test";
     vector<bool> arr;
     for (int i = 0; i < sElias.size(); i++) {
         for (int j = 0; j < sElias[i]; j++) {
@@ -52,6 +53,7 @@ vector<int> RLE(vector<int> sElias, bool fn) {
         ans.push_back(0);
         return ans;
     }
+
     else {
         for (int i = 0, count = 0; count != arr.size(); i++) {
             ans.push_back(0);
@@ -66,8 +68,8 @@ vector<int> RLE(vector<int> sElias, bool fn) {
 int main() {
     string s;
     do {
-        cout << "Elias gamma code: ";
-        getline(cin, s);
+       cout << "Elias gamma code: ";
+       getline(cin, s);
     } while (theIdiotTest(s));
 
     vector<int> sElias = elias(s);
@@ -78,7 +80,7 @@ int main() {
 
     vector<int> sRLE = RLE(sElias, (s[0] == '1' ? 1 : 0));
     cout << endl << endl << "RLE to Text: ";
-    if (sRLE[0] == 0) cout << "Incorrect value";
+    if (sRLE.size() == 0 || sRLE[0] == 0) cout << "Incorrect value";
     else {
         for (int i = 0; i < sRLE.size(); i++) {
             cout << char(sRLE[i]);
