@@ -39,7 +39,6 @@ vector<int> elias(string s) {
 }
 
 vector<int> RLE(vector<int> sElias, bool fn) {
-    cout << "test";
     vector<bool> arr;
     for (int i = 0; i < sElias.size(); i++) {
         for (int j = 0; j < sElias[i]; j++) {
@@ -53,7 +52,6 @@ vector<int> RLE(vector<int> sElias, bool fn) {
         ans.push_back(0);
         return ans;
     }
-
     else {
         for (int i = 0, count = 0; count != arr.size(); i++) {
             ans.push_back(0);
@@ -68,8 +66,8 @@ vector<int> RLE(vector<int> sElias, bool fn) {
 int main() {
     string s;
     do {
-       cout << "Elias gamma code: ";
-       getline(cin, s);
+        cout << "Elias gamma code: ";
+        getline(cin, s);
     } while (theIdiotTest(s));
 
     vector<int> sElias = elias(s);
