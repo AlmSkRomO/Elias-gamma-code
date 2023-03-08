@@ -24,13 +24,13 @@ vector<int> elias(string s) {
             int k = 2;
             i++;
             while (i < s.length() && s[i] != '1') {
-                k *= 2;
+                k*=2;
                 i++;
             }
             arr.push_back(0);
             while (i < s.length() && k) {
-                arr[arr.size() - 1] += k * (s[i] == '1' ? 1 : 0);
-                k /= 2;
+                arr[arr.size()-1] += k*(s[i] == '1' ? 1 : 0);
+                k/=2;
                 i++;
             }
         }
@@ -48,15 +48,15 @@ vector<int> RLE(vector<int> sElias, bool fn) {
     }
 
     vector<int> ans;
-    if (arr.size() % 8 != 0) {
+    if (arr.size() % 8 != 0) { 
         ans.push_back(0);
-        return ans;
+        return ans; 
     }
-    else {
+    else { 
         for (int i = 0, count = 0; count != arr.size(); i++) {
             ans.push_back(0);
-            for (int n = 128; n; n /= 2, count++) {
-                ans[i] += arr[count] * n;
+            for (int n = 128; n; n/=2, count++) {
+                ans[i] += arr[count]*n;
             }
         }
     }
