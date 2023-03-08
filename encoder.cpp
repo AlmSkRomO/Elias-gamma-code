@@ -56,13 +56,13 @@ int main() {
     getline(cin, s);
 
     // From 10 base to 2 base
-    bool* b2 = new bool[s.length()*7];
+    bool* b2 = new bool[s.length()*8];
     for (int i = 0; s[i]; i++) {
-        translate(b2, int(s[i]), i*7, 128);
+        translate(b2, int(s[i]), i*8, 256);
     }
 
     // From 2 base text to RLE
-    vector<int> sRLE = RLE(b2, s.length()*7);
+    vector<int> sRLE = RLE(b2, s.length()*8);
     cout << endl << "Text to RLE: ";
     for (int i = 0; i < sRLE.size(); i++) {
         cout << sRLE[i] << ' ';
@@ -72,7 +72,7 @@ int main() {
     // From RLE to Elias gamma code
     vector<bool> sElias = elias(sRLE);
     cout << endl << endl << "RLE to Elias gamma code: ";
-    cout << int(s[0]) / 64; // First bit (0 or 1)
+    cout << int(s[0]) / 128; // First bit (0 or 1)
     for (int i = 0; i < sElias.size(); i++) {
         cout << sElias[i];
     }
